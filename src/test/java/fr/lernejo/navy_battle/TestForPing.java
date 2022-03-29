@@ -33,4 +33,11 @@ public class TestForPing {
         Assertions.assertEquals(content.toString(), "OK", "The message is not valid");
         // LET'S GO YOU DID IT
     }
+
+    @org.junit.jupiter.api.Test
+    void Pingwithoneargument() throws IOException, InterruptedException {
+        String[] arguments = {};
+        ;
+        Assertions.assertThrows(NullPointerException.class, ()->Launcher.main(arguments), "Usage: Launcher [port]");
+    }
 }
