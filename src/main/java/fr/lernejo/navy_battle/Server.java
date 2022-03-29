@@ -18,10 +18,11 @@ public class Server {
     }
 
     public void beginServ(int p, String connectionURL) throws IOException {
-        HttpServer serv = HttpServer.create(new InetSocketAddress(p), 0);
+        InetSocketAddress address = new InetSocketAddress(p);
+        HttpServer serv = HttpServer.create(address, 0);
+        serv.createContext("/ping", this::handle);
         ExecutorService exec = Executors.newFixedThreadPool(1);
         serv.setExecutor(exec);
-        serv.createContext("/ping", this::handle);
         serv.start();
     }
 }
