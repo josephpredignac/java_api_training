@@ -18,9 +18,9 @@ public class Server {
     }
 
     public void beginServ(int p, String connectionURL) throws IOException {
-        InetSocketAddress address = new InetSocketAddress(p);
-        HttpServer serv = HttpServer.create(address, 0);
-        serv.setExecutor(Executors.newSingleThreadExecutor());
+        HttpServer serv = HttpServer.create(new InetSocketAddress(p), 0);
+        ExecutorService exec = Executors.newFixedThreadPool(1);
+        serv.setExecutor(exec);
         serv.createContext("/ping", this::handle);
         serv.start();
     }
