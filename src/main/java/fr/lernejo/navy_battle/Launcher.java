@@ -19,13 +19,10 @@ public class Launcher {
             }
             int p = Integer.parseInt(args[0]);
             System.out.println("Listening on port "  + p);
-            if (args.length == 2) {
-                new Server().beginServ(p, args[1]);
-            }
+            if (args.length == 2) { new Server().beginServ(p, args[1]); }
             else {
                 new Server().beginServ(p, null);
             }
-
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
