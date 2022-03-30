@@ -15,7 +15,7 @@ public class ClientSide {
                 .uri(URI.create(connectionURL + "/api/game/start"))
                 .setHeader("Accept", "application/json")
                 .setHeader("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + p + "\", \"msg\":\"Comment ça va ce sooooiiiir ?\"}"))
+                .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + p + "\", \"message\":\"Comment ça va ce sooooiiiir ?\"}"))
                 .build();
             client.send(req, HttpResponse.BodyHandlers.ofString());
         }
