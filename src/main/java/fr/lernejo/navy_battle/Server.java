@@ -17,12 +17,14 @@ public class Server {
         try (OutputStream os = exchange.getResponseBody()) {os.write(b.getBytes());}
     }
 
-    public void beginServ(int p, String connectionURL) throws IOException {
+    public void beginServ(int p, String connection) throws IOException {
         InetSocketAddress address = new InetSocketAddress(p);
         HttpServer serv = HttpServer.create(address, 0);
         serv.createContext("/ping", this::handle);
         ExecutorService exec = Executors.newFixedThreadPool(1);
         serv.setExecutor(exec);
         serv.start();
+        ClientSide c = new ClientSide();
+        c.begin(p, connection);
     }
 }
