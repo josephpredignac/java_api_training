@@ -17,7 +17,7 @@ public class Server {
         try (OutputStream os = exchange.getResponseBody()) {os.write(b.getBytes());}
     }
 
-    public void beginServ(int p, String connection) throws IOException {
+    public void beginServ(int p, String connection) throws IOException, InterruptedException {
         InetSocketAddress address = new InetSocketAddress(p);
         HttpServer serv = HttpServer.create(address, 0);
         serv.createContext("/ping", this::handle);
